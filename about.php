@@ -57,6 +57,8 @@
                                 <li>Creating apply.html</li>
                                 <li>Creating styles.css</li>
                                 <li>Standardizing Menu Header & Footer</li>
+                                <li>Create manage.php</li>
+                                <li>Create enhancements.php</li>
                             </ul>
                         </li>
                     </ul>
@@ -69,6 +71,10 @@
                         <dt>styles.css</dt>
                         <dd>He wrote all the code for the header, footer and <br>
                             backgrounds of every page.</dd>
+                        <dt>manage.php</dt>
+                        <dd>He wrote all the code for the page</dd>
+                        <dt>enhancements.php</dt>
+                        <dd>He wrote all the code for the page</dd>
                       </dl>
 
                     <h3>Biography</h3>
@@ -162,6 +168,10 @@
                                 <li>Creating index.html</li>
                                 <li>Creating about.html</li>
                                 <li>Providing the idea & template for package.html</li>
+                                <li>Use PHP to reuse header, footer & menu</li>
+                                <li>Create settings.php</li>
+                                <li>Create an EOI table</li>
+                                <li>Update members contribution on the about page</li>
                             </ul>
                         </li>
                     </ul>
@@ -172,6 +182,14 @@
                         <dd>He wrote all the code & all content therein</dd>
                         <dt>about.html</dt>
                         <dd>He wrote all the code & all content therein</dd>
+                        <dt>header.inc, footer.inc & menu.inc</dt>
+                        <dd>He wrote all the code & all content therein and updated the file names to .php & .inc</dd>
+                        <dt>settings.php</dt>
+                        <dd>He wrote all the code & all content therein</dd>
+                        <dt>EOI table</dt>
+                        <dd>He wrote all content therein</dd>
+                        <dt>Update members contribution</dt>
+                        <dd>He wrote all content therein</dd>
                       </dl>
 
                     <h3>Biography</h3>
@@ -264,6 +282,8 @@
                             <ul>
                                 <li>Creating jobs.html</li>
                                 <li>Creating package.html</li>
+                                <li>Create table 'jobs' MySQL database</li>
+                                <li>Create process_eoi.php</li>
                             </ul>
                         </li>
                     </ul>
@@ -274,6 +294,10 @@
                         <dt>jobs.html</dt>
                         <dd>He wrote all the code & all content therein</dd>
                         <dt>package.html</dt>
+                        <dd>He wrote all the code & all content therein</dd>
+                        <dt>'jobs' MySQL database</dt>
+                        <dd>He wrote all content therein</dd>
+                        <dt>process_eoi.php</dt>
                         <dd>He wrote all the code & all content therein</dd>
                     </dl>
                     
