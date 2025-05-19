@@ -1,0 +1,773 @@
+/*
+filename: styles.css
+author: Lachlan Phillips, with edits from Marcus and Matthew for their respective pages
+created: 21/3/2025
+last modified: 14/4/2025
+description: index.html,apply.html,about.html,jobs.html, packages.html
+*/
+
+/*=========================================================================*/
+/*Core*/
+/*=========================================================================*/
+html{height:100%} /* Lachlan - Ensuring height is set to 100% of page, Related to ensuring that divs can fill page*/
+
+body { 
+    background-color:rgb(19, 19, 19);/* Lachlan - Set background colour to near black*/
+    margin:0%; /*Lachlan - Make sure body isn't being pushed away from edge of page*/
+    padding:0%; /*Lachlan - Make sure content isn't pushed away from edge of body*/
+    display:flex;
+    flex-direction: column; /*Lachlan - Ensure flow of elements is vertical overall*/
+    height: 100%; /* Lachlan - Ensuring height is set to 100% of page, Related to ensuring that divs can fill page*/
+}
+
+/*=========================================================================*/
+/*Whole site*/
+/*=========================================================================*/
+.site_content{ /* Lachlan - Think of this as a custom body class for divs */
+    padding-left: 2%; /*Offset content of this div from the left side of page by 2% of it*/
+    padding-right: 2%; /*Offset content of this div from the right side of page by 2%*/
+    padding-bottom: 0.5%; /*Offset content from bottom*/
+    flex-grow: 1; /*ensure it fills the site content area*/
+    border-radius: 0; /*Override the roundness attributes set below*/
+}
+
+div, button, input, select, option,textarea, li, section, label,a, fieldset, table,th,td, dl,h2 {
+    border:none; /*Lachlan - Remove border outline from buttons, inputs and the like*/
+    border-radius: 10px; /* Lachlan - Make everything rounded*/
+    transition: background-color 250ms;/*Lachlan - Make any CSS change to background-colour fade transition in 250ms*/
+}
+
+input::placeholder                          {color:rgb(160,160,160);   } /*Lachlan - Change colour of placeholder text for input */
+a:visited                                   {color:#8583fa;            } /*Lachlan - Colour of link when it's been clicked before*/
+
+input,select,button                         {background-color: #4d5da5;} /*Lachlan - background colors of input and select*/
+input:hover,select:hover                    {background-color: #2b3871;} /*Lachlan - Set background of inputs to darker colour on hover*/
+
+legend                                      {font-size: larger;          } /*Lachlan - Make sure legend (The "title" of each formdiv is larger than interior text*/
+
+* { /* Lachlan - Set font-family and color for almost all elements used*/
+    font-family: sans-serif;
+    color:antiquewhite;
+}
+
+textarea{ /*-Lachlan*/
+    background-color: rgb(16,16,16);
+    width: 100%; /*Lachlan - Make sure it fills the width*/
+    min-height: 100px; /*Lachlan - Min height 100px so it doesn't look awkward*/
+} 
+table { /*Lachlan*/
+    background-color:rgb(16,16,16);
+}
+
+@keyframes site_content_fadein { /*Lachlan - Fade animation*/
+    from{
+        opacity: 0; /*Go from completely transperant*/
+    }
+    to {
+        opacity:1; /*To opaque*/
+    }
+}
+
+/*=========================================================================*/
+
+
+/*=========================================================================*/
+/*index.html*/
+/*=========================================================================*/
+.site_content_index_background{ /* Lachlan - (Version for index.html with background) Think of this as a custom body class for divs */
+
+    background-image: url("images/stock_computer.png"); /*set background picture to https://unsplash.com/photos/macbook-pro-on-white-surface-WiONHd_zYI4*/
+    background-size: cover; /*Cover avaiable area with it*/
+    background-attachment: fixed;
+}
+
+.site_content_index_amazingquote{ /*Lachlan - For the centered quotes */
+    text-align: center;
+    color:whitesmoke;
+    animation: site_content_fadein forwards 2s; /*Lachlan - Fade it in 2 seconds*/
+    margin-bottom: 0;
+}
+
+.site_content_index_details{ /*Lachlan - For all the individual paragrapths */
+    display: flex; /*Lachlan - Space all the paragraphs evenly vertically*/
+    flex-direction: column;
+    justify-content: space-evenly; 
+    width:100%;
+    margin:0%;
+}
+.site_content_index_details div { /*Lachlan - For each block of information in page*/
+    width:100%;
+    padding-top: 0%;
+    border-radius: 0px;
+}
+.site_content_index_details div:nth-child(3)
+{
+    background-image: url("images/stock_keyboard.png"); /*https://unsplash.com/photos/closeup-photo-of-computer-keyboard-WkfDrhxDMC8*/
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position-y: center;
+}
+.site_content_index_details div section { /*Lachlan - For each subsection of the above*/
+    width: 95%;
+    background-color: #333333;
+    margin-bottom: 20px;
+    padding: 0.5%;
+    margin:auto;
+    margin-bottom: 10px;
+    animation: site_content_fadein forwards 4s; /*Lachlan - Fade it in 5 seconds*/
+}
+.site_content_index_details h2{
+    display:block;
+    width:100%;
+    background-color: #131313;
+    text-align: center;
+    margin-top: 0%;
+    border-radius: 0px;
+    animation: site_content_fadein forwards 3s; 
+}
+.site_content_index_details div section h4,p,ol {
+    margin-top:0px;
+    margin-bottom: 3px;
+}
+/*=========================================================================*/
+/*jobs.html*/
+/*=========================================================================*/
+.jobs_background {
+    background-image: url("images/stock_keyboard_2.png"); /*https://unsplash.com/photos/focus-photography-of-computer-keyboard-with-red-lights-feXpdV001o4*/
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.jobs_background div, .jobs_background aside{
+    background-color: #131313;
+    padding: 1%;
+    animation: site_content_fadein forwards 3s; /* Modified by Marcus to apply on jobs.html */
+}
+#jobs_disclaim_section
+{
+    display:flex;
+    flex-direction: column;
+    background:none;
+    float:right;
+    width:25%;
+}
+/* Sets a border to all div elements within id="jobs_disclaim_section" aside area with: 
+float to the right side of the screen
+30% screen width
+solid white border
+1em of spacing from edge
+1em of padding from within border*/
+#jobs_disclaim_section div {
+    border: solid white;
+    border-radius: 14px;
+    background-color: #1E1D1D;
+    margin: 1em;
+    padding: 1em;
+}
+
+
+
+
+/* sets float of id="jobs_positions" to the left*/
+#jobs_positions{
+    background:none;
+    float:left;
+    width:65%;
+    margin-top:0;
+}
+
+#jobs_positions h2 {
+    margin-top: 0;
+}
+
+/* Sets a border to the element with id="network_admin" with:
+solid white border
+2em patting from within border
+background colour of #1E1D1D */
+#network_admin{
+    border: solid white;
+    padding: 2em;
+    background-color: #1E1D1D;
+}
+
+/* Sets a border to the element with id="systems_engineer" with:
+solid white border
+2em patting from within border
+background colour of #1E1D1D */
+#systems_engineer{
+    border: solid white;
+    padding: 2em;
+    background-color: #1E1D1D;
+}
+
+/* Sets a border to the element with id="security_analyst" with:
+solid white border
+2em patting from within border
+background colour of #1E1D1D */
+#security_analyst{
+    border: solid white;
+    padding:2em;
+    background-color: #1E1D1D;
+}
+
+/*=========================================================================*/
+
+
+/*=========================================================================*/
+/*about.html*/
+/*=========================================================================*/
+#aboutus_group_photo{
+    width:100%;
+    text-align: center;
+    /*animation: site_content_fadein forwards 6s; /*Lachlan - Fade it in 2 seconds*/
+}
+#aboutus_group_photo figure img {
+    width:80%;
+    height:auto;
+
+    min-width: 100px;
+    min-height: 200px;
+
+    max-width: 700px;
+    max-height: 400px;
+    border-radius: 50px;
+}
+.about_section{ /*Lachlan-  For each container about a person in the about page*/
+    padding-right: 40px;
+    padding-left: 20px;
+    padding-top: 20px;
+    margin-bottom: 40px;
+    flex-direction: column;
+    display:flex;
+    justify-content: space-between;
+    background-color: #1e1e1e;
+}
+#about_section_container { /*Lachlan - The container of all person sections*/
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /*background-color: #131313;*/
+}
+#about_section_container * *, #about_section_container h2{ /*All of the items and h2s in about section container*/
+    animation: site_content_fadein forwards 6s; /*Lachlan - Fade it in 2 seconds*/
+
+}
+
+.about_section section h3 { /*Lachlan - To stop unnessecary gaps between heading and paragraphs*/
+    margin-top: 0px;
+    margin-bottom: 5px;
+}
+.about_section section { /*Lachlan - Each section... for an about section... not contradictory at all*/
+    background-color: #131313;
+    width:100%;
+    margin-bottom: 10px;
+    padding:1%; /*Lachlan - Make elements go away from the premimeter by 1% on all sides*/
+    padding-top:5px; /*Lachlan - Override top padding and make it just 5 pixels*/
+}
+.about_section section table { /*Lachlan - Make sure the table takes up fill width*/
+    width:100%;
+
+}
+.about_section section dl  /*Lachlan - Contributions list*/
+{
+    background-color: #121212;
+    width:fit-content;
+    padding:1%;
+    display: block;
+    border-radius: 25px;
+}
+.about_section section dl dt {
+    background-color: #2e2e2e;
+    border-radius: 25px;
+    text-align: center;
+}
+.about_section section dl dd {
+    margin:0;
+    text-align: center;
+}
+.about_section section table dl { /*Lachlan - related to table for likes etc*/
+    background-color: #454545;
+}
+.about_section section table dt {
+    font-weight: bold;
+}
+.about_section section table tr th { /*Make table header of table row color 2e2e2e*/
+    background-color: #2e2e2e;
+}
+.about_section section table tr th:hover{ /*Lachlan - Hover effect for the table (Darken on hover)*/
+    background-color: #131313;
+}
+.about_section section table tr td:hover{ /*Lachlan - Hover effect for the table (Darken on hover)*/
+    background-color: #0f0f0f;
+    font-weight: bold;
+}
+.about_section section table tr td { /*Lachlan - Make background of td element of table row color 1e1e1e*/
+    background-color: #1e1e1e;
+    padding-left: 10px;
+    height:20px;
+}
+
+.about_section_headshot{ /*This class was originally made by matthew, edited by lachlan*/
+    width:50%;
+    border: 5px solid rgb(146, 141, 255);
+    border-radius: 25px;
+    float:right;
+}
+.about_section_id{ /*For student id */
+    text-align: right; /*This class was originally made by matthew, edited by lachlan*/
+}
+
+.about_background { /*Lachlan - Set the background for about section*/
+    background-image: url("images/stock_keyboard_2.png"); /* https://unsplash.com/photos/focus-photography-of-computer-keyboard-with-red-lights-feXpdV001o4*/
+    background-size: cover; /*Cover the page with the background*/
+    background-attachment: fixed; /*Make it not scroll with page*/
+}
+
+/*=========================================================================*/
+
+/*=========================================================================*/
+/*apply.html*/
+/*=========================================================================*/
+.site_form_title { /*Lachlan - Make the title fade into view, over 5 seconds*/
+    animation: site_content_fadein forwards 5s;
+}
+.site_form_background { /*Lachlan - The background of apply.html*/
+    background-image: url("images/stock_keyboard.png"); /*https://unsplash.com/photos/closeup-photo-of-computer-keyboard-WkfDrhxDMC8*/
+    background-size: cover;
+    background-attachment: fixed;
+}
+.site_form_container { /*Lachlan - For the container that contains all the form submission things*/
+    background-color: rgb(26, 26, 26);
+    padding: 1%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.site_form_container_section{ /*Lachlan - For the legends inside of a site_form_container*/
+    background-color: #131313;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+.site_form_container_section > * { /* Lachlan - Make all contents of the site_form_container_section classes use the fadein animation over 6 seconds*/
+    animation: site_content_fadein forwards 6s;
+}
+.site_form_container_section legend { /*Lachlan*/
+    float:left; /*Lachlan - Force legend to go inside form area*/
+    padding-bottom: 0.5%; /*Lachlan - Make sure theres a gap between it and elements below*/
+}
+.site_form_container_section input, .site_form_container_section select {
+    max-width: 25%; /*Lachlan - Simply to fix a bug where the date and select job reference inputs' width was filling the entire div*/
+}
+.site_form_submit_area { /*Lachlan - For the submit and reset buttons, makes sure they are spread evenly horizontally*/
+    display:flex;
+    flex-direction: row;
+    justify-content: space-evenly; 
+}
+.site_form_submit{ /*Lachlan - Size and colour for submit button on application form*/
+    width:45%;
+    height:40px;
+    background-color:rgb(52, 143, 90);;
+}
+
+.site_form_submit:hover{ background-color: rgb(37, 104, 65); } /*Lachlan - hover colour for submit*/
+
+.site_form_reset{ /*Lachlan - Size and colour for reset button on application form*/
+    width:45%;
+    height:40px;
+    background-color: rgb(255, 88, 88);
+}
+
+.site_form_reset:hover{ background-color: rgb(169, 76, 76); } /*Lachlan - hover colour for reset*/
+
+/*=========================================================================*/
+
+
+/*=========================================================================*/
+/*Top bar*/
+/*=========================================================================*/
+.site_header_company_logo {height: 100%;} /*Lachlan - Make sure logo doesn't become larger 
+than header by setting it to, and thus restricting it to 100%*/
+.site_header_menu_image {height: 50%; width:auto; min-height: 10px; min-width: 10px;} /*Lachlan - For the menu button for the dropdown menu*/
+
+.site_header_item{ /*Lachlan - Just related to layout stuff*/
+    height: 100%;
+    align-content: center;
+}
+
+.site_header_navbuttons{ /*Lachlan - Just related to layout stuff*/
+    height: 100%;
+    display:flex;
+    flex-direction: row;
+    width:100%;
+    justify-content: space-between;
+    padding-left: 2.5%;
+    padding-right: 2.5%;
+    padding-top: 0.35%;
+}
+.site_header_navbuttons a  { /*For each button of the the nav buttons section that appears when the page is large enough*/
+    align-content: center;
+    background-color: #323232;
+    padding-left: 4.5%;
+    padding-right: 4.5%;
+    text-decoration: none;
+    height: 80%;
+    vertical-align: middle;
+    color: aliceblue;
+}
+.site_header_navbuttons a:hover {
+    background-color: #232323;
+}
+/*Lachlan, conditional based on screen width from stackoverflow answer
+https://stackoverflow.com/questions/18776322/can-i-hide-the-element-if-it-doesnt-fit-the-available-width-using-css-only*/
+@media screen and (max-width:1000px){
+    .site_header_navbuttons{display:none;}
+}
+#site_header{ /*Lachlan - actual id for the header at the top of the page */
+    /*Not to be confused with HTML Header tags for metadata, this is for the topbar*/
+    background-color: rgba(25,25,25);/* rgb(32, 42, 179);*/
+    display: flex;
+    flex-direction: row;
+    height:50px;
+    width:100%;
+}
+
+.site_footer{ /*Lachlan - Custom Footer class for a div that goes inside <footer> tag */
+    width: 100%;
+    background-color: rgb(15, 15, 15);
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between; /*Spread contents evenly around*/
+    height:fit-content;
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+.site_footer div /*Lachlan - each horizontal row in the footer*/
+{
+
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width:100%;
+}
+.site_footer div a { /*Make sure links at the bottom are grayed out for asthetics*/
+    text-decoration: none;
+    color: #808080;
+}
+.site_footer div section {
+    margin-bottom: 50px;
+    display:flex;
+    flex-direction: column;
+    text-align: left;
+    margin-left:2%;
+    margin-right: 2%;
+    margin-bottom: 10px;
+    width:100%;
+}
+.site_footer div section a {
+    margin-bottom: 8px;
+    text-decoration: none;
+    color:#8583fa
+}
+
+.site_footer_bottom * {
+    text-align: center;
+}
+.site_footer div section h3{
+    margin-top: 2%;
+    margin-bottom: 1%;
+}
+
+/*=========================================================================*/
+/*
+    Dropdown menu for page header originally sourced from
+    https://www.w3schools.com/howto/howto_css_dropdown.asp
+*/
+/*=========================================================================*/
+/* The container <div> - needed to position the dropdown content */
+.site_menu_dropdown {
+    position: relative;
+    margin-left: auto; 
+    margin-right: 0;
+    height:100%;
+}
+
+/* Dropdown Button */
+.site_menu_dropdown_button {
+    background-color: #9aacff;
+    border: none;
+    width:100%;
+    height:100%;
+    min-width: 87px;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.site_menu_dropdown_content {
+    display: none;
+    position: absolute;
+    background-color: #333333;
+    width:100%;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+/* Links inside the dropdown */
+.site_menu_dropdown_content a {
+color: rgb(202, 200, 200);
+padding: 12px 16px;
+text-decoration: none;
+display: block;
+}
+
+/* Change color of dropdown links on hover */
+.site_menu_dropdown_content a:hover {background-color: #444444;}
+
+/* Show the dropdown menu on hover */
+.site_menu_dropdown:hover .site_menu_dropdown_content {display: block;}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.site_menu_dropdown:hover .site_menu_dropdown_button {background-color: #8583fa;}
+/*=========================================================================*/
+
+
+
+/*For index.html specifically, writtern by Matthew, edited by Lachlan */
+.background{
+    padding-left: 2%;
+    padding-right: 2%;
+    background-image: url("images/stock_computer_2.png"); /*set background picture to this*/
+    background-repeat: repeat-x;
+    background-size: cover; /*Cover avaiable area with it*/
+    flex-grow: 1;
+    border-radius: 0;
+}
+.container{ /*makes all flexed items have a space between them, inspiration from https://www.w3schools.com/css/tryit.asp?filename=trycss3_flexbox_justify-content_space-between*/
+    display: flex; 
+    align-items: center;
+    justify-content: space-between;
+}
+.logo, .systempic{
+    display:flex;
+    justify-content:right;
+    align-items:center;
+    float: right;
+}
+.superheader{
+    font-size: 60px;
+}
+.imground {border-radius: 50%}
+.banner{
+    background-color: #136abe;
+    width: 90%;
+    padding: 30px;
+}
+.awardpic_column{
+    float: right;
+    width: 16%;
+    padding: 25px;
+}
+.column{
+    font-size: 12px
+    }
+.visionpic{
+    display:flex;
+    justify-content:left;
+    align-items:center;
+    float:left;
+}
+.visiontext{
+    float:left;
+    padding: 20px
+}
+.linkbutton{
+    background-color: white;
+    color:black;
+    text-align:center;
+    display:inline-block;
+    border-radius:25px;
+    padding:25px 200px;
+    text-decoration:none;
+    position: relative;
+    left:30%
+}
+.infolinkbutton{
+    background-color: white;
+    color:black;
+    text-align:center;
+    display:inline-block;
+    border-radius:25px;
+    min-width: 250px;
+    padding:15px 100px;
+    text-decoration:none;
+    position: relative;
+    left:65%;
+    top: -50px;
+}
+.jobs a:hover{
+    background-color:  #ddd;
+}
+.qline{
+    height:100px;
+    border-left: 7px solid red;
+    border-radius: 0;
+    padding: 25px;
+    
+    align-items:center;
+    margin-bottom: 20px;
+    display: flex
+    }
+    
+    .aline{
+    height:100px;
+    border-left: 7px solid grey;
+    border-radius: 0;
+    padding: 25px;
+    
+    align-items:center;
+    margin-bottom: 20px;
+    display: flex
+    }
+    .Q{
+    font-size: 70px;
+    color: red;
+    
+    border: 3px;
+    padding: 20px;
+    }
+    .A{
+    font-size: 70px;
+    color: grey;
+    
+    border: 3px;
+    padding: 20px;
+    }
+    .qtext{
+        color: red;
+        font-size: 30px;
+    
+        width: 50%;
+        padding: 20px;
+        border: 2px;
+        margin-left:20px;
+    }
+    .atext{
+        color: grey;
+        font-size: 30px;
+    
+        width: 50%;
+        padding: 20px;
+        border: 2px;
+        margin-left:20px;
+    }
+
+/*=======================================================*/
+/*=======================================================*/
+/*packages.html*/
+/*=======================================================*/
+.package_packages{ /*Lachlan - The div containing the 3 package items*/
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 2%;
+    height:80%;
+}
+.package_packages div { /*Lachlan - The div for each package*/
+    background-color: #1f1f1f;
+    text-align: center;
+    display:flex;
+    flex-direction: column;
+    margin-right: 2%;
+    margin-left: 2%;
+    min-height: fit-content;
+}
+.package_packages :nth-child(1) p /*Lachlan - First package title colour*/
+{
+    background-color: #2c3dbc;
+}
+.package_packages :nth-child(2) p/*Lachlan - Second package title colour*/
+{
+    background-color: #6b7093;
+}
+.package_packages :nth-child(3) p/*Lachlan - Third package title colour*/
+{
+    background-color: #aa994d;
+}
+
+.package_packages div h3,.package_packages div p {  /*Lachlan - ensure elements take up 100% width and have no gaps with eachother*/
+    width:100%;
+    margin:0%;
+}
+.package_packages div h3 {
+    background-color: #0f0f0f;
+}
+.package_packages div p { /*Lachlan - Ensure the top bar of the package is rounded at top*/
+   
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+}
+.package_packages div ul { /*Lachlan - contains all the checkbox items*/
+    text-align: center;
+    padding:5%;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+.package_packages div ul li{ /*Lachlan - checkbox item*/
+    list-style-type: none;
+    background-color: #3d58cd;
+    margin-top: 4%; /*Just to help spread them out*/
+    height:fit-content;
+}
+
+.package_packages div button { /*Lachlan - Bottom package purchase button*/
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    margin-top:auto;
+    height:10%;
+    background-color: #182d8a;
+}
+.package_packages div button:hover{ /*Lachlan - Darken the button when hovered*/
+    background-color: #283056;
+}
+
+
+/*=======================================================*/
+/*=======================================================*/
+/*standardpackage.html*/
+/*=======================================================*/
+
+/* Sets a border to the element with id="standard_package" with:
+2em patting from within border
+background colour of #1E1D1D */
+#standard_package{
+    padding: 2em;
+    background-color: #1E1D1D;
+}
+
+/*=======================================================*/
+/*=======================================================*/
+/*plusultrapackage.html*/
+/*=======================================================*/
+
+/* Sets a border to the element with id="standard_package" with:
+2em patting from within border
+background colour of #1E1D1D */
+#plus_ultra_package{
+    padding: 2em;
+    background-color: #1E1D1D;
+}
+
+/*=======================================================*/
+/*=======================================================*/
+/*plusultrapackage.html*/
+/*=======================================================*/
+
+/* Sets a border to the element with id="standard_package" with:
+2em patting from within border
+background colour of #1E1D1D */
+#premium_package{
+    padding: 2em;
+    background-color: #1E1D1D;
+}

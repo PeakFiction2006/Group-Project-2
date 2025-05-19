@@ -1,0 +1,221 @@
+<!-- 
+    process_eoi.php
+    Created by Lachlan Phillips
+-->
+<?php
+    function cancelRequest($reason="Unknown ") // Utility for exiting out of an invalid / successful request
+    {
+        echo('<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Victoria Digital Security Services - Innovating IT</title>
+    <link rel="stylesheet" href="../styles/styles.css">
+    <link rel="icon" href="../images/icon.png"> <!--Logo source https://www.freeimages.com/vector/generic-logo-4846322-->
+    <meta name="author" content="Matthew, Marcus and Lachlan ">
+    <meta name="keywords" content="HTML, Javascript, IT, Website, Business, Programming, Code, Web Design">
+    <meta name="description" content="Innovative technology solutions! COMPANY NAME is at the forefront of IT.">
+</head>
+
+
+<body>
+');
+        include("header.inc");
+        include("menu.inc");
+        echo('<h1>Error! Invalid input!</h1>');
+        echo("<h2>Error message: ");
+        echo(isset($reason) ? $reason : "Undefined");
+        echo('</h2><br>
+        <h1><a href="apply.php">Retry!</a></h2>');
+        include("footer.inc");
+        //header("Location: apply.php");
+        exit();
+    }
+
+    function validateName($name) // https://www.w3schools.com/php/php_form_url_email.asp
+    {
+        return (preg_match("/^[a-zA-Z-' ]*$/", $name) != 0);
+    }
+
+    function validateDate($date, $format = 'Y-m-d') // https://www.php.net/manual/en/function.checkdate.php
+    {
+        $d = DateTime::createFromFormat($format, $date);
+        return $d && $d->format($format) == $date;
+    }
+
+?>
+
+<?php
+    include_once("settings.php");
+
+    $httpToSqlMap = array(
+        "jobref" => "jobref",
+        "detail_name_first" => "name_first",
+        "detail_name_last" => "name_last",
+        "detail_birthdate" => "birthdate",
+        "detail_gender" => "gender",
+        "detail_location_street" => "addr_street",
+        "detail_location_suburbtown" => "addr_suburb",
+        "detail_location_state" => "addr_state",
+        "detail_location_postcode" => "addr_postcode",
+        "detail_contact_email" => "contact_email",
+        "detail_contact_phone" => "contact_phone",
+        "detail_skill" => "skills",
+        "detail_skill_other" => "skills_other"
+
+    );
+    $sqlValues = array();
+
+    foreach( $httpToSqlMap as $key => $val)
+    {
+        if (!isset($_POST[$key])) // If any of these aren't set, cancel!
+            cancelRequest("Missing input " . $key);
+        
+        if (is_string($_POST[$key]) && $_POST[$key] == "")
+        {
+            if ($key != "detail_skill_other")
+                cancelRequest("Missing input " . $key);
+            $_POST[$key] = "Undefined";
+        }
+
+        if (is_array($_POST[$key])) // If array, validate each of the values inside of it
+        {
+            $sqlValues[$val] = array();
+
+            foreach($_POST[$key] as $itemkey => $itemval)
+                $sqlValues[$val][$itemkey] = mysqli_real_escape_string($conn, $itemval); // make the value SQL query safe
+
+            continue;
+        }
+       
+        $sqlValues[$val] = mysqli_real_escape_string($conn, $_POST[$key]); // make the value SQL query safe
+     
+    }
+
+    $validJobs = array(
+        "NAXG2",
+        "SE7M5",
+        "SAH05"
+    );
+    if (!in_array($sqlValues["jobref"], $validJobs))
+        cancelRequest("Invalid Job Reference Number!");
+    /*foreach( $sqlValues as $key => $val) // Just print all the values for debugging
+    {
+         echo($key . ": ");
+        if (is_array($val))
+        {
+            foreach($val as $item)
+                echo($item . ", ");
+            echo("<br>");
+            continue;
+        }
+        echo(strval($val) . "<br>");
+    }*/
+
+    // Check names contains only A-Za-z
+    if (!validateName($sqlValues["name_first"]) || !validateName($sqlValues["name_last"]))
+        cancelRequest("Invalid Name! Contains non-letters!");
+
+    // Ensure length of names are not above 20
+    if (strlen($sqlValues["name_first"]) > 20 || strlen($sqlValues["name_last"]) > 20)
+        cancelRequest("Invalid Name! More than 20 characters!");
+
+    // Check birthdate is a valid date
+    if (!validateDate($sqlValues["birthdate"])) 
+        cancelRequest("Invalid date for birthday!");
+    
+    // Check gender is one of the defined options
+    if ($sqlValues["gender"] != "Male" &&
+        $sqlValues["gender"] != "Female" &&
+        $sqlValues["gender"] != "Other")
+        cancelRequest("Undefined Gender!");
+
+
+    // Ensure length of address details are not above 40
+    if (strlen($sqlValues["addr_street"]) > 40 || strlen($sqlValues["addr_suburb"]) > 40)
+        cancelRequest("Street / Suburb / Town name too long!");
+
+    $validAddresses = array(
+        "VIC",
+        "NSW",
+        "QLD",
+        "NT",
+        "WA",
+        "SA",
+        "TAS",
+        "ACT"
+    );
+
+    // If the state is invalid / Not in the state list
+    if (!in_array($sqlValues["addr_state"], $validAddresses))
+        cancelRequest("Invalid State!");
+
+    // If the post code isn't a number
+    if (preg_match("(^[0-9]+)", $sqlValues["addr_postcode"]) == 0 || strlen(strval($sqlValues["addr_postcode"])) > 4)
+        cancelRequest("Invalid Postcode!");
+
+    // Convert postcode to number
+    $sqlValues["addr_postcode"] = intval($sqlValues["addr_postcode"]);
+    
+    // Check the emails valid
+    if (!filter_var($sqlValues["contact_email"], FILTER_VALIDATE_EMAIL))
+        cancelRequest("Invalid E-mail!");
+    
+    // Check phone number valid
+    if (!preg_match("(^[0-9]+)", $sqlValues["contact_phone"]) || strlen($sqlValues["contact_phone"]) > 12 || strlen($sqlValues["contact_phone"]) < 8)
+        cancelRequest("Invalid Phone Number!");
+
+    $validSkills = array(
+        "Programming",
+        "MySQL",
+        "Html",
+        "Teamwork",
+    );
+
+    // Check the skill is in the skills list
+    foreach($sqlValues["skills"] as $key=>$val)
+        if (!in_array($val, $validSkills))
+            cancelRequest("Invalid Skill!");
+
+    
+
+    $query = "INSERT INTO EOI ('eoi_status', ";
+
+    $lastkey = array_key_last($sqlValues);
+    foreach($sqlValues as $key=>$val)
+        $query .= "'" . $key . "'" . ($lastkey  != $key ? ", " : "");
+
+    $query .= ") VALUES ('New', ";
+    foreach($sqlValues as $key=>$val)
+    {
+        $query .= "'";
+        if (is_array($val))
+            $val = join(", ", $val);
+        $query .= $val;
+        $query .= "'" . ($lastkey  != $key ? ", " : "");
+    }
+
+    $query .= ")";
+    echo($query);
+    echo("A ok! :D");
+
+
+?>
+<!--
+    eoi_number INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    eoi_status VARCHAR(7) NOT NULL
+    jobref VARCHAR(5) NOT NULL,
+    name_first VARCHAR(30) NOT NULL,
+    name_last VARCHAR(30) NOT NULL,
+    gender VARCHAR(10) NOT NULL,
+    birthdate DATE NOT NULL,
+    addr_street VARCHAR(100) NOT NULL,
+    addr_suburb VARCHAR(100) NOT NULL,
+    addr_state VARCHAR(100) NOT NULL,
+    addr_postcode INT(4) NOT NULL,
+    contact_email VARCHAR(100) NOT NULL,
+    contact_phone INT(15) NOT NULL,
+    skills VARCHAR(100),
+    skills_other VARCHAR(2048) NOT NULL,
+    )");--?

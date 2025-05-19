@@ -19,7 +19,7 @@
 
     <div class="site_content site_form_background"> <!--Lachlan - Site content class is like a custom body class for a div in this case-->
         <h1 class = "site_form_title">Apply now!</h1> <!--Title-->
-        <form method="post" action="http://mercury.swin.edu.au/it000000/formtest.php"> <!--Post request-->
+        <form method="post" action= "process_eoi.php" novalidate=”novalidate”><!--"http://mercury.swin.edu.au/it000000/formtest.php"--> <!--Post request-->
             <div class="site_form_container">
                 <!--<legend>Job Application Form</legend> --> <!--Legend here is a bit unessecary and confusing looking-->
                 <fieldset class="site_form_container_section"> <!--List of Job References to select from-->
@@ -108,19 +108,19 @@
                     <legend>Required Technical List</legend> <!--Lachlan - Generic skills check list-->
                     <ol>
                         <li>
-                            <input id="skill0" type="checkbox" name="detail_skill_1" value="Programming" checked required>
+                            <input id="skill0" type="checkbox" name="detail_skill[]" value="Programming" checked required>
                             <label for="skill0">Basic programming knowledge in JavaScript and PHP.</label>
                         </li>
                         <li>
-                            <input id="skill1" type="checkbox" name="detail_skill_2" value="MySQL">
+                            <input id="skill1" type="checkbox" name="detail_skill[]" value="MySQL">
                             <label for="skill1">Able to use MySQL Databases.</label>
                         </li>
                         <li>
-                            <input id="skill2" type="checkbox" name="detail_skill_3" value="Html">
+                            <input id="skill2" type="checkbox" name="detail_skill[]" value="Html">
                             <label for="skill2">Able to use HTML and CSS.</label>
                         </li>
                         <li>
-                            <input id="skill4" type="checkbox" name="detail_skill_4" value="Teamwork">
+                            <input id="skill4" type="checkbox" name="detail_skill[]" value="Teamwork">
                             <label for="skill4">Team Worker</label>
                         </li>
                     </ol>
