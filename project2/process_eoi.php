@@ -7,13 +7,16 @@
     {
         include("header.inc");
         include("nav.inc");
+
         echo('<h1>Error! Invalid input!</h1>');
+
         echo("<h2>Error message: ");
         echo(isset($reason) ? $reason : "Undefined");
+
         echo('</h2><br>
         <h1><a href="apply.php">Retry!</a></h2>');
+        
         include("footer.inc");
-        //header("Location: apply.php");
         exit();
     }
 
@@ -28,7 +31,7 @@
         return $d && $d->format($format) == $date;
     }
 
-    function toSQLString($val)
+    function toSQLString($val) // Just format the value to have '' surrounding it if it's a string
     {
         if (is_array($val))
             return toSQLString(join(", ", $val));
@@ -42,7 +45,7 @@
 <?php
     include_once("settings.php");
 
-    $httpToSqlMap = array(
+    $httpToSqlMap = array( // Map the HTTP request keys to the SQL table keys, saves some lines of code later on
         "jobref" => "jobref",
         "detail_name_first" => "name_first",
         "detail_name_last" => "name_last",
@@ -56,7 +59,6 @@
         "detail_contact_phone" => "contact_phone",
         "detail_skill" => "skills",
         "detail_skill_other" => "skills_other"
-
     );
     $sqlValues = array();
 
@@ -92,20 +94,9 @@
         "SE7M5",
         "SAH05"
     );
+    // Check the job reference is correct
     if (!in_array($sqlValues["jobref"], $validJobs))
         cancelRequest("Invalid Job Reference Number!");
-    /*foreach( $sqlValues as $key => $val) // Just print all the values for debugging
-    {
-         echo($key . ": ");
-        if (is_array($val))
-        {
-            foreach($val as $item)
-                echo($item . ", ");
-            echo("<br>");
-            continue;
-        }
-        echo(strval($val) . "<br>");
-    }*/
 
     // Check names contains only A-Za-z
     if (!validateName($sqlValues["name_first"]) || !validateName($sqlValues["name_last"]))
@@ -192,20 +183,3 @@
     $conn->query($query);
     header("Location: apply_success.php");
 ?>
-<!--
-    eoi_number INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    eoi_status VARCHAR(7) NOT NULL
-    jobref VARCHAR(5) NOT NULL,
-    name_first VARCHAR(30) NOT NULL,
-    name_last VARCHAR(30) NOT NULL,
-    gender VARCHAR(10) NOT NULL,
-    birthdate DATE NOT NULL,
-    addr_street VARCHAR(100) NOT NULL,
-    addr_suburb VARCHAR(100) NOT NULL,
-    addr_state VARCHAR(100) NOT NULL,
-    addr_postcode INT(4) NOT NULL,
-    contact_email VARCHAR(100) NOT NULL,
-    contact_phone INT(15) NOT NULL,
-    skills VARCHAR(100),
-    skills_other VARCHAR(2048) NOT NULL,
-    )");--?
