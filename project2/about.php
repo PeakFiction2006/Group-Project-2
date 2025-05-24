@@ -3,7 +3,7 @@
     <title>VDLS - About us</title>
     <meta name="description" content="Innovative technology solutions! COMPANY NAME is at the forefront of IT.">
 </head>
-<?php include("menu.inc");?>
+<?php include("nav.inc");?>
 
 <body>
 

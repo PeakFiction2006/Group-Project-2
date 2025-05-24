@@ -6,7 +6,7 @@
     <title>VDLS - Application Portal</title>
     <meta name="description" content="Innovative technology solutions! COMPANY NAME is at the forefront of IT.">
 </head>
-<?php include("menu.inc");?>
+<?php include("nav.inc");?>
 <body>
 
     <div class="site_content site_form_background"> <!--Lachlan - Site content class is like a custom body class for a div in this case-->

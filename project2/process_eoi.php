@@ -6,7 +6,7 @@
     function cancelRequest($reason="Unknown ") // Utility for exiting out of an invalid / successful request
     {
         include("header.inc");
-        include("menu.inc");
+        include("nav.inc");
         echo('<h1>Error! Invalid input!</h1>');
         echo("<h2>Error message: ");
         echo(isset($reason) ? $reason : "Undefined");

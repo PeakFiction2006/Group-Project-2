@@ -8,7 +8,6 @@
             <a href="about.php">About us</a>
             <a href="jobs.php">Jobs</a>
             <a href="apply.php">Apply</a>
-            <a href="package.php">Packages</a>
             <a href="mailto:info@vdls.com.au">E-Mail</a> <!--Direct user to company email-->
         </div>
         <div class="site_menu_dropdown"> <!--Dropdown menu template from https://www.w3schools.com/howto/howto_css_dropdown.asp-->
@@ -19,7 +18,6 @@
               <a href="about.php">About us</a>
               <a href="jobs.php">Jobs</a>
               <a href="apply.php">Apply</a>
-              <a href="package.php">Packages</a>
               <a href="mailto:info@vdls.com.au">E-Mail</a>  <!--Direct user to company email-->
             </div>
         </div>

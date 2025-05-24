@@ -4,7 +4,7 @@
     <title>VDLS - Careers at VDLS</title>
     <meta name="description" content="Work under your corporate overlords in our currently open positions.">
 </head>
-<?php include("menu.inc");?>
+<?php include("nav.inc");?>
 
 <body>
     <!--Put all of the webpage content inside this div-->
