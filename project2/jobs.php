@@ -1,21 +1,12 @@
 <!-- Page template by Lachlan, modified by Marcus -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../styles/styles.css">
-    <link rel="icon" href="../images/icon.png">
-    <meta name="author" content="Matthew, Marcus and Lachlan ">
-    <meta name="keywords" content="HTML, Javascript, IT, Website, Business, Programming, Code, Web Design">
-    <meta name="description" content="Work under your corporate overlords in our currently open positions.">
-    <title>VDLS - Careers at VDLS</title>
-</head>
-
-<body>
 <?php include("header.inc");?>
+<head>
+    <title>VDLS - Careers at VDLS</title>
+    <meta name="description" content="Work under your corporate overlords in our currently open positions.">
+</head>
 <?php include("menu.inc");?>
 
+<body>
     <!--Put all of the webpage content inside this div-->
     <!-- Note that semantic tags will replace div tags in the future - MA -->
     <div class="site_content jobs_background">

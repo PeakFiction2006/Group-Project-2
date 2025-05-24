@@ -5,22 +5,6 @@
 <?php
     function cancelRequest($reason="Unknown ") // Utility for exiting out of an invalid / successful request
     {
-        echo('<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Victoria Digital Security Services - Innovating IT</title>
-    <link rel="stylesheet" href="../styles/styles.css">
-    <link rel="icon" href="../images/icon.png"> <!--Logo source https://www.freeimages.com/vector/generic-logo-4846322-->
-    <meta name="author" content="Matthew, Marcus and Lachlan ">
-    <meta name="keywords" content="HTML, Javascript, IT, Website, Business, Programming, Code, Web Design">
-    <meta name="description" content="Innovative technology solutions! COMPANY NAME is at the forefront of IT.">
-</head>
-
-
-<body>
-');
         include("header.inc");
         include("menu.inc");
         echo('<h1>Error! Invalid input!</h1>');
@@ -95,11 +79,12 @@
             foreach($_POST[$key] as $itemkey => $itemval)
                 $sqlValues[$val][$itemkey] = mysqli_real_escape_string($conn, $itemval); // make the value SQL query safe
 
+            unset($_POST[$key]);
             continue;
         }
        
         $sqlValues[$val] = mysqli_real_escape_string($conn, $_POST[$key]); // make the value SQL query safe
-     
+        unset($_POST[$key]);
     }
 
     $validJobs = array(
@@ -203,9 +188,9 @@
     }
 
     $query .= ")";
-    echo($query);
-    echo("A ok! :D");
+
     $conn->query($query);
+    header("Location: apply_success.php");
 ?>
 <!--
     eoi_number INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,

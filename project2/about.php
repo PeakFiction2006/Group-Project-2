@@ -1,19 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php include("header.inc");?>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../styles/styles.css">
-    <link rel="icon" href="../images/icon.png">     <!--Logo source https://www.freeimages.com/vector/generic-logo-4846322-->
-    <meta name="author" content="Matthew, Marcus and Lachlan ">
-    <meta name="keywords" content="HTML, Javascript, IT, Website, Business, Programming, Code, Web Design">
-    <meta name="description" content="The Boring Company Entertainment at a Price">
-    <title>VDLS - About Us </title>
+    <title>VDLS - About us</title>
+    <meta name="description" content="Innovative technology solutions! COMPANY NAME is at the forefront of IT.">
 </head>
+<?php include("menu.inc");?>
 
 <body>
-<?php include("header.inc");?>
-<?php include("menu.inc");?>
+
 
     <div class="site_content about_background">    
         <h2>Personal Info of Members</h2>

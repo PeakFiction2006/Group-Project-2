@@ -1,21 +1,13 @@
 <!--
     apply.html - Managed by Lachlan Phillips
 -->
-<!DOCTYPE html>
-<html lang="en">
+<?php include("header.inc");?>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VDLS - Application Portal</title>
-    <link rel="stylesheet" href="../styles/styles.css">
-    <link rel="icon" href="../images/icon.png">     <!--Logo source https://www.freeimages.com/vector/generic-logo-4846322-->
-    <meta name="author" content="Matthew, Marcus and Lachlan ">
-    <meta name="keywords" content="HTML, Javascript, IT, Website, Business, Programming, Code, Web Design">
     <meta name="description" content="Innovative technology solutions! COMPANY NAME is at the forefront of IT.">
 </head>
-<body>
-<?php include("header.inc");?>
 <?php include("menu.inc");?>
+<body>
 
     <div class="site_content site_form_background"> <!--Lachlan - Site content class is like a custom body class for a div in this case-->
         <h1 class = "site_form_title">Apply now!</h1> <!--Title-->

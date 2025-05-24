@@ -1,21 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php include("header.inc");?>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Victoria Digital Security Services - Innovating IT</title>
-    <link rel="stylesheet" href="../styles/styles.css">
-    <link rel="icon" href="../images/icon.png"> <!--Logo source https://www.freeimages.com/vector/generic-logo-4846322-->
-    <meta name="author" content="Matthew, Marcus and Lachlan ">
-    <meta name="keywords" content="HTML, Javascript, IT, Website, Business, Programming, Code, Web Design">
     <meta name="description" content="Innovative technology solutions! COMPANY NAME is at the forefront of IT.">
 </head>
-
+<?php include("menu.inc");?>
 
 <body>
-<?php include("header.inc");?>
-<?php include("menu.inc");?>
-    
+
 <div class="background"> <!--background is the canvas that holds the contents of the screen with background image stock_computer_2.png-->
         <br><br><br><br><br>
         <div class="container"> <!--sets up the space for a specific portion of the page-->
