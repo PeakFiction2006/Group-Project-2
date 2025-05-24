@@ -1,13 +1,11 @@
-<!-- Page template by Lachlan, modified by Marcus -->
-<?php include("header.inc");?>
+<?php include("header.inc");?> <!-- Include the header file -->
 <head>
     <title>VDLS - Careers at VDLS</title>
     <meta name="description" content="Work under your corporate overlords in our currently open positions.">
 </head>
 
 <body>
-<?php include("header.inc");?>
-<?php include("menu.inc");?>
+<?php include("nav.inc");?> <!-- Include the menu navigation file -->
 
     <!--Put all of the webpage content inside this div-->
     <div class="site_content jobs_background">
