@@ -96,6 +96,8 @@ function print_eoi_table($result)
             <th>Job Ref</th>
             <th>First Name</th>
             <th>Last Name</th>
+            <th>Birthdate</th>
+            <th>Gender</th>
             <th>Street</th>
             <th>Suburb</th>
             <th>State</th>
