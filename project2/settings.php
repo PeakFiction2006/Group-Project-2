@@ -28,4 +28,9 @@ $conn->query("CREATE TABLE IF NOT EXISTS EOI (
     skills_other VARCHAR(2048) NOT NULL
     )");
 
+$conn->query("CREATE TABLE IF NOT EXISTS ACCOUNTS (
+    user_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_name VARCHAR(50) NOT NULL,
+    user_password VARCHAR(50) NOT NULL
+    )");
 ?>
