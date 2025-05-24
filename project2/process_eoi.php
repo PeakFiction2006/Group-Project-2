@@ -44,6 +44,15 @@
         return $d && $d->format($format) == $date;
     }
 
+    function toSQLString($val)
+    {
+        if (is_array($val))
+            return toSQLString(join(", ", $val));
+        if (!is_string($val))
+            return strval($val);
+        return "'". strval($val) . "'";
+    }
+
 ?>
 
 <?php
@@ -180,27 +189,23 @@
 
     
 
-    $query = "INSERT INTO EOI ('eoi_status', ";
+    $query = "INSERT INTO eoi (eoi_status, ";
 
     $lastkey = array_key_last($sqlValues);
     foreach($sqlValues as $key=>$val)
-        $query .= "'" . $key . "'" . ($lastkey  != $key ? ", " : "");
+        $query .= $key . ($lastkey  != $key ? ", " : "");
 
     $query .= ") VALUES ('New', ";
     foreach($sqlValues as $key=>$val)
     {
-        $query .= "'";
-        if (is_array($val))
-            $val = join(", ", $val);
-        $query .= $val;
-        $query .= "'" . ($lastkey  != $key ? ", " : "");
+        $query .= toSQLString($val);
+        $query .= ($lastkey  != $key ? ", " : "");
     }
 
     $query .= ")";
     echo($query);
     echo("A ok! :D");
-
-
+    $conn->query($query);
 ?>
 <!--
     eoi_number INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
