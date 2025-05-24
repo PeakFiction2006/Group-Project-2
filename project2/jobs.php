@@ -1,23 +1,15 @@
 <!-- Page template by Lachlan, modified by Marcus -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../styles/styles.css">
-    <link rel="icon" href="../images/icon.png">
-    <meta name="author" content="Matthew, Marcus and Lachlan ">
-    <meta name="keywords" content="HTML, Javascript, IT, Website, Business, Programming, Code, Web Design">
-    <meta name="description" content="Work under your corporate overlords in our currently open positions.">
-    <title>VDLS - Careers at VDLS</title>
-</head>
-
-<body>
 <?php include("header.inc");?>
-<?php include("menu.inc");?>
+<head>
+    <title>VDLS - Careers at VDLS</title>
+    <meta name="description" content="Work under your corporate overlords in our currently open positions.">
+</head>
+<?php include("nav.inc");?>
+<body>
+<?php include("header.inc");?> <!-- Include header file -->
+<?php include("menu.inc");?> <!-- Inlcude navigation menu file -->
 
     <!--Put all of the webpage content inside this div-->
-    <!-- Note that semantic tags will replace div tags in the future - MA -->
     <div class="site_content jobs_background">
         
         
@@ -77,30 +69,48 @@
 
     <div id="jobs_positions">  <!-- Seperate div for listed positions -->
         <h2>Open Positions at Careers at Victoria Digital Security</h2>
-        <section id="network_admin"> <!-- Seperate section for Network Admin -->
 
+        <section id="network_admin"> <!-- Section for Network Admin -->
+            <?php // php start
+                $conn = mysqli_conect($host, $username, $password, $database); // Connect to the job listings database
+                if (!$conn) { // Check connection
+                    echo "<p>Database connection failed: " . mysqli_connect_error() . "</p>";
+                } else {
+                    // Query to get job listing data
+                    $sql = "SELECT *, description, picture FROM listings_basic";
+                    $result = mysqli_query($conn, $sql);
+
+                    if ($result && mysqli_num_rows($result) > 0) {
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            //Output from database 
+                        }
+                    }
+
+                }
+
+
+
+            ?>
         </section>
 
                     
-    </div>
-                
+         
                 <br><br><br>                
 
-                    <section id="systems_engineer"> <!-- Seperate section for Systems Engineer -->
+                    <section id="systems_engineer"> <!-- Section for Systems Engineer -->
                         
                     </section>
 
                     <br><br><br>
 
-                    <section id="security_analyst">  <!-- Seperate section for security analyst -->
+                    <section id="security_analyst">  <!-- Section for security analyst -->
                     
                 </section>
 
                     <br>
-            </div>
-        </div>
+    </div>
 
-<?php include("footer.inc");?>
+<?php include("footer.inc");?> <!-- Include the footer file -->
 
 </body>
 </html>
