@@ -16,6 +16,8 @@ $conn->query("CREATE TABLE IF NOT EXISTS EOI (
     jobref VARCHAR(5) NOT NULL,
     name_first VARCHAR(30) NOT NULL,
     name_last VARCHAR(30) NOT NULL,
+    birthdate DATE NOT NULL,
+    gender VARCHAR(10) NOT NULL,
     addr_street VARCHAR(100) NOT NULL,
     addr_suburb VARCHAR(100) NOT NULL,
     addr_state VARCHAR(100) NOT NULL,
