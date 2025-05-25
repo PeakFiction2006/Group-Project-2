@@ -70,13 +70,13 @@
 
         <section id="network_admin"> <!-- Section for Network Admin -->
             <?php // php start
-                $conn = mysqli_conect($host, $username, $password, $database); // Connect to the job listings database
+                $conn_listings = mysqli_conect($host, $username, $password, $database_listings); // Connect to the job listings database
                 if (!$conn) { // Check connection
                     echo "<p>Database connection failed: " . mysqli_connect_error() . "</p>";
                 } else {
                     // Query to get job listing data
                     $sql = "SELECT * FROM listings_basic";
-                    $result = mysqli_query($conn, $sql);
+                    $result = mysqli_query($conn_listings, $sql);
 
                     if ($result && mysqli_num_rows($result) > 0) { //If there are results in the database, display them
                         while ($row = mysqli_fetch_assoc($result)) {
@@ -91,21 +91,23 @@
                             $pref_qual = htmlspecialchars($row['pref_qual']);
 
                             // Database content
-                            echo "<h3>"['position']"</h3>"
-                            echo "<p>Reference ID: "['ref_id']"</p>"
-                            echo "<p>Salary: "['salary']"</p>"
-                            echo "<p>Years of Experience: "['yoe']"</p>"
-                            echo "<h4>Brief Description</h4>"
-                            echo "<p>"['desc']"</p>"
-                            echo "<p>"['responsibilities']"</p>"
-
+                            echo "<h3>" . ['position'] . "</h3>";
+                            echo "<p>Reference ID: " . ['ref_id'] . "</p>";
+                            echo "<p>Salary: " . ['salary'] . "</p>";
+                            echo "<p>Years of Experience: " . ['yoe'] . "</p>";
+                            echo "<h4>Brief Description</h4>";
+                            echo "<p>" . ['desc'] . "</p>";
+                            echo "<p>" . ['responsibilities'] . "</p>";
+                            echo "<p>" . ['essen_qual'] . "</p>";
+                            echo "<p>" . ['pref_qual'] . "</p>";
                         }
                     } else { //No results found
                         echo "<p>No data found for Network Administrator</p>";
                     }
                 }
-                mysqli_close($conn);
+                mysqli_close($conn_listings);
             ?>
+            <input class="site_form_submit" type="submit" name="Submit">
         </section>
 
                     
