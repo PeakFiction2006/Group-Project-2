@@ -3,8 +3,10 @@ $host = "localhost";
 $username = "root";
 $password = "";
 $database = "EOI";
+$database_listings = "listings_basic"
 
 $conn = mysqli_connect($host, $username, $password, $database);
+$conn_listings = $conn = mysqli_connect($host, $username, $password, $database_listings);
 
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
@@ -37,7 +39,7 @@ $conn->query("CREATE TABLE IF NOT EXISTS ACCOUNTS (
     )");
 
 // Marcus - listings_basic table
-$conn->query("CREATE TABLE IF NOT EXISTS `listings_basic` (
+$conn_listings->query("CREATE TABLE IF NOT EXISTS `listings_basic` (
   `ref_id` varchar(5) NOT NULL,
   `position` varchar(30) NOT NULL,
   `salary` varchar(20) NOT NULL,
