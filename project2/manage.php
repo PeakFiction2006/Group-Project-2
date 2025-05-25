@@ -83,6 +83,7 @@
 
 function print_eoi_row($row)
 {
+    echo("<tr>");
     foreach($row as $item)
         print("<td>" . $item . "</td>");
     echo("</tr>");
