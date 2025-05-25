@@ -21,6 +21,13 @@
 
         <div class="site_form_container">
             <div class="site_form_container_section">
+                <h2>Manager Account Registration Page</h2>
+                <p>Allows users to register a manager account.</p>
+            </div>
+        </div>
+
+        <div class="site_form_container">
+            <div class="site_form_container_section">
                 <h2>Login Timeout on more than 3 Failed attempts</h2>
                 <p>Ability to attempt to login is restricted for 3 minutes on 4th failed login attempt.</p>
             </div>
