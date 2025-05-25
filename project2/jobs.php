@@ -91,14 +91,15 @@
                             $pref_qual = htmlspecialchars($row['pref_qual']);
 
                             // Database content
-                            echo "<h3>"['position']"</h3>"
-                            echo "<p>Reference ID: "['ref_id']"</p>"
-                            echo "<p>Salary: "['salary']"</p>"
-                            echo "<p>Years of Experience: "['yoe']"</p>"
-                            echo "<h4>Brief Description</h4>"
-                            echo "<p>"['desc']"</p>"
-                            echo "<p>"['responsibilities']"</p>"
-
+                            echo "<h3>" . ['position'] . "</h3>";
+                            echo "<p>Reference ID: " . ['ref_id'] . "</p>";
+                            echo "<p>Salary: " . ['salary'] . "</p>";
+                            echo "<p>Years of Experience: " . ['yoe'] . "</p>";
+                            echo "<h4>Brief Description</h4>";
+                            echo "<p>" . ['desc'] . "</p>";
+                            echo "<p>" . ['responsibilities'] . "</p>";
+                            echo "<p>" . ['essen_qual'] . "</p>";
+                            echo "<p>" . ['pref_qual'] . "</p>";
                         }
                     } else { //No results found
                         echo "<p>No data found for Network Administrator</p>";
@@ -106,6 +107,7 @@
                 }
                 mysqli_close($conn);
             ?>
+            <input class="site_form_submit" type="submit" name="Submit">
         </section>
 
                     
