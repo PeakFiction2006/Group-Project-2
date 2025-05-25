@@ -23,7 +23,7 @@
 
         $_SESSION['login_attempts']++;
 
-        if ($_SESSION['login_attempts'] > 2)
+        if ($_SESSION['login_attempts'] > 3)
         {
             $_SESSION['login_attempts'] = 0;
             $_SESSION['login_timeout'] = time() + 180;
