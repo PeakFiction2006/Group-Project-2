@@ -18,6 +18,7 @@
               <a href="about.php">About us</a>
               <a href="jobs.php">Jobs</a>
               <a href="apply.php">Apply</a>
+              <a href="login.php">Login</a>
               <a href="mailto:info@vdls.com.au">E-Mail</a>  <!--Direct user to company email-->
             </div>
         </div>

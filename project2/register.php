@@ -28,6 +28,7 @@
                 <div class="site_form_submit_area"> <!--For spreading buttons evenly-->
                     <button class="site_form_submit" type="submit">Submit</button>
                 </div>
+                <p>Already have an account? <a href="login.php">Login here!</a></p>
             </div>
         </form>
     </div>
