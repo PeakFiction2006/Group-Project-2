@@ -1,10 +1,40 @@
 <?php
     session_start();
-    function login_fail()
+    function login_error_page($message="Invalid Username/Password!")
     {
-        header("Location: login.php");
+        include("header.inc");
+        include("nav.inc");
+        echo('<body>
+        <div class="site_content site_form_background"> <!--Lachlan - Site content class is like a custom body class for a div in this case-->
+            <br>  
+        <div class = "site_form_container">
+                <h1>Login Fail!</h1> <!--Title-->    
+                <p>'); echo($message); echo ('</p>
+                <h2><a href="login.php">Try again</a></h2>
+            </div>
+        </div>');
+        include("footer.inc");
         exit();
     }
+    function login_fail()
+    {
+        if (!isset($_SESSION['login_attempts']))
+              $_SESSION['login_attempts'] = 0;
+
+        $_SESSION['login_attempts']++;
+
+        if ($_SESSION['login_attempts'] > 2)
+        {
+            $_SESSION['login_attempts'] = 0;
+            $_SESSION['login_timeout'] = time() + 180;
+        }
+        //header("Location: login.php");
+        //exit();
+        login_error_page();
+    }
+
+    if (isset($_SESSION['login_timeout']) && $_SESSION['login_timeout'] > time())
+        login_error_page("You have failed the login too many times! Please wait 3 minutes before attempting to log in again!");
 
     if (!isset($_POST["login_username"]) )
         login_fail();
