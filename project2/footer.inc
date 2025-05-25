@@ -7,7 +7,9 @@
                     <a href="about.php">About us</a>
                     <a href="jobs.php">Jobs</a>
                     <a href="apply.php">Apply</a>
-                    <a href="package.php">Packages</a>
+                    <a href="enhancements.php">Enhancements</a>
+                    <a href="login.php">Login</a>
+                    <a href="register.php">Register</a>
                 </section>
                 <section>
                     <h3>Socials</h3>
