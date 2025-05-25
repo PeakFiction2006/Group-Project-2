@@ -70,13 +70,13 @@
 
         <section id="network_admin"> <!-- Section for Network Admin -->
             <?php // php start
-                $conn = mysqli_conect($host, $username, $password, $database); // Connect to the job listings database
+                $conn_listings = mysqli_conect($host, $username, $password, $database_listings); // Connect to the job listings database
                 if (!$conn) { // Check connection
                     echo "<p>Database connection failed: " . mysqli_connect_error() . "</p>";
                 } else {
                     // Query to get job listing data
                     $sql = "SELECT * FROM listings_basic";
-                    $result = mysqli_query($conn, $sql);
+                    $result = mysqli_query($conn_listings, $sql);
 
                     if ($result && mysqli_num_rows($result) > 0) { //If there are results in the database, display them
                         while ($row = mysqli_fetch_assoc($result)) {
@@ -105,7 +105,7 @@
                         echo "<p>No data found for Network Administrator</p>";
                     }
                 }
-                mysqli_close($conn);
+                mysqli_close($conn_listings);
             ?>
             <input class="site_form_submit" type="submit" name="Submit">
         </section>
