@@ -1,3 +1,6 @@
+<!--
+    process_login.php, created by Lachlan Phillips
+-->
 <?php
     session_start();
     function login_error_page($message="Invalid Username/Password!")

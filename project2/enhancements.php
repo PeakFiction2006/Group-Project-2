@@ -18,6 +18,13 @@
                 <p>Access to the manage.php page is restricted to logged in users. (login.php/process_login.php)<br>The accounts name/password is stored in a table the sql database</p>
             </div>
         </div>
+
+        <div class="site_form_container">
+            <div class="site_form_container_section">
+                <h2>Login Timeout on more than 3 Failed attempts</h2>
+                <p>Ability to attempt to login is restricted for 3 minutes on 4th failed login attempt.</p>
+            </div>
+        </div>
     </div>
 
 <?php include("footer.inc");?>
