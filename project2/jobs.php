@@ -75,19 +75,36 @@
                     echo "<p>Database connection failed: " . mysqli_connect_error() . "</p>";
                 } else {
                     // Query to get job listing data
-                    $sql = "SELECT *, description, picture FROM listings_basic";
+                    $sql = "SELECT * FROM listings_basic";
                     $result = mysqli_query($conn, $sql);
 
-                    if ($result && mysqli_num_rows($result) > 0) {
+                    if ($result && mysqli_num_rows($result) > 0) { //If there are results in the database, display them
                         while ($row = mysqli_fetch_assoc($result)) {
                             //Output from database 
+                            $ref_id = htmlspecialchars($row['ref_id']);
+                            $position = htmlspecialchars($row['position']);
+                            $salary = htmlspecialchars($row['salary']);
+                            $yoe = htmlspecialchars($row['yoe']);
+                            $desc = htmlspecialchars($row['desc']);
+                            $responsibilities = htmlspecialchars($row['responsibilities']);
+                            $essen_qual = htmlspecialchars($row['essen_qual']);
+                            $pref_qual = htmlspecialchars($row['pref_qual']);
+
+                            // Database content
+                            echo "<h3>"['position']"</h3>"
+                            echo "<p>Reference ID: "['ref_id']"</p>"
+                            echo "<p>Salary: "['salary']"</p>"
+                            echo "<p>Years of Experience: "['yoe']"</p>"
+                            echo "<h4>Brief Description</h4>"
+                            echo "<p>"['desc']"</p>"
+                            echo "<p>"['responsibilities']"</p>"
+
                         }
+                    } else { //No results found
+                        echo "<p>No data found for Network Administrator</p>";
                     }
-
                 }
-
-
-
+                mysqli_close($conn);
             ?>
         </section>
 
