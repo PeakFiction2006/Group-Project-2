@@ -50,8 +50,10 @@
                                 <li>Creating apply.html</li>
                                 <li>Creating styles.css</li>
                                 <li>Standardizing Menu Header & Footer</li>
-                                <li>Create manage.php</li>
-                                <li>Create enhancements.php</li>
+                                <li>Created manage.php</li>
+                                <li>Created login.php</li>
+                                <li>Created register.php</li>
+                                <li>Created enhancements.php</li>
                             </ul>
                         </li>
                     </ul>

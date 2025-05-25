@@ -19,6 +19,17 @@
                 <form method="post">
                     <fieldset class="site_form_container_section">
                         <legend>List all EOIs</legend>
+
+                        <p><label for="sortorder">Order by</label>
+                        <select id="sortorder" name="sortorder" required>
+                            <option value="eoi_number">ID</option>
+                            <option value="eoi_status">Status</option>
+                            <option value="jobref">Reference Number</option>
+                        </select></p>
+                        <p><label for="sortdescending">Descending</label>
+                        <input type="radio" name="sortdescending" id="sortdescending" value="desc"></p>
+
+                        <br>
                         <!--This button queries then prints a table of all the EOI *matthew-->
                         <button type="submit" name="list_all_EOI" value="list_all_EOI">Request</button>
                     </fieldset>
@@ -28,6 +39,15 @@
                 <fieldset class="site_form_container_section">
                     <legend>Search EOI by Reference</legend>
                     <!--This button compares the job reference number then prints the one with the same as inputed *matthew-->
+                     <p><label for="sortorder">Order by</label>
+                        <select id="sortorder" name="sortorder" required>
+                            <option value="eoi_number">ID</option>
+                            <option value="eoi_status">Status</option>
+                            <option value="jobref">Reference Number</option>
+                        </select></p>
+                        <p><label for="sortdescending">Descending</label>
+                        <input type="radio" name="sortdescending" id="sortdescending" value="desc"></p>
+                        <br>
                     <p>
                         <label for="search_position">Reference No.:</label>
                         <input type="text" name="search_position" id="search_position">
@@ -39,6 +59,15 @@
                 <fieldset class="site_form_container_section">  
                     <legend>Search EOI by Name</legend>    
                     <!--This button finds a particular applicant by using their name *matthew-->
+                      <p><label for="sortorder">Order by</label>
+                        <select id="sortorder" name="sortorder" required>
+                            <option value="eoi_number">ID</option>
+                            <option value="eoi_status">Status</option>
+                            <option value="jobref">Reference Number</option>
+                        </select></p>
+                        <p><label for="sortdescending">Descending</label>
+                        <input type="radio" name="sortdescending" id="sortdescending" value="desc"></p>
+                        <br>
                     <p>
                         <label>First Name: </label><input type="text" name="search_name_first"><br>
                         <label>Last Name: </label><input type="text" name="search_name_last">
@@ -115,12 +144,23 @@ function print_eoi_table($result)
     echo("</table>");
 }
 require_once "settings.php"; 
+function get_sort_order()
+{
+    if (!isset($_POST['sortorder'])) return '';
+    global $conn;
+    $order = mysqli_real_escape_string($conn, $_POST['sortorder']);
+    $decending = isset($_POST['sortdescending']) && $_POST['sortdescending'] == 'desc' ? "DESC" : "";
+    unset($_POST['sortdescending']);
+    unset($_POST['sortorder']);
+
+    return ' ORDER BY ' . $order . ' ' . $decending;
+}
 // This code lists and prints all EOI's into a table
 if (isset($_POST['list_all_EOI']) && $_POST["list_all_EOI"] == "list_all_EOI")
 {
     unset($_POST['list_all_EOI']);
 
-    $query = "SELECT * FROM EOI";
+    $query = "SELECT * FROM EOI" . get_sort_order();
     $result = $conn->query($query);
 
     if (!$result)
@@ -141,7 +181,7 @@ if (isset($_POST['list_all_EOI']) && $_POST["list_all_EOI"] == "list_all_EOI")
 if (isset($_POST['search_position'])) {
     $jobref = mysqli_real_escape_string($conn, $_POST['search_position']); 
     unset($_POST['search_position']);
-    $sql = "SELECT * FROM EOI WHERE jobref LIKE '$jobref'";
+    $sql = "SELECT * FROM EOI WHERE jobref LIKE '$jobref'" . get_sort_order();
     $result = mysqli_query($conn, $sql);
 
     if (mysqli_num_rows($result) == 0)
@@ -165,6 +205,7 @@ if (isset($_POST['search_name_first']) && isset($_POST['search_name_last'])){
         $name_last = mysqli_real_escape_string($conn, $_POST['search_name_last']);
         $sql .= "AND name_last LIKE '%$name_last%'";
     }
+    $sql .= get_sort_order();
     $result = mysqli_query($conn, $sql);
 
     if (mysqli_num_rows($result) > 0) {
