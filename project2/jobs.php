@@ -66,17 +66,20 @@
     <br><br>
 
     <div id="jobs_positions">  <!-- Seperate div for listed positions -->
-        <h2>Open Positions at Careers at Victoria Digital Security</h2>
+        <h2>Currently Open Positions at Careers at Victoria Digital Security</h2>
 
         <section id="network_admin"> <!-- Section for Network Admin -->
+            <h3>Network Administrator</h3>
             <?php // php start
                 $conn_listings = mysqli_connect($host, $username, $password, $database_listings); // Connect to the job listings database
+                echo "<p>testing</p>";
+                
                 if (!$conn_listings) { // Check connection
                     echo "<p>Database connection failed: " . mysqli_connect_error() . "</p>";
                 } else {
                     $sql = "SELECT * FROM listings_basic LIMIT 1"; // Query to get the first job listing data
                     $result = mysqli_query($conn_listings, $sql);
-
+                    
                     if ($result && mysqli_num_rows($result) > 0) { //If there are results in the database, display them
                         $row = mysqli_fetch_assoc($result); // Fetch the first row of results
                         //while ($row = mysqli_fetch_assoc($result)) {
@@ -111,19 +114,19 @@
 
                     
          
-                <br><br><br>                
+        <br><br><br>                
 
-                    <section id="systems_engineer"> <!-- Section for Systems Engineer -->
-                        
-                    </section>
+        <section id="systems_engineer"> <!-- Section for Systems Engineer -->
+            <h3>Systems Engineer</h3>
+        </section>
 
-                    <br><br><br>
+        <br><br><br>
 
-                    <section id="security_analyst">  <!-- Section for security analyst -->
-                    
-                </section>
+        <section id="security_analyst">  <!-- Section for security analyst -->
+            <h3>Security Analyst</h3>
+        </section>
 
-                    <br>
+        <br>
     </div>
 
 <?php include("footer.inc");?> <!-- Include the footer file -->
