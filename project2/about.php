@@ -50,10 +50,9 @@
                                 <li>Creating apply.html</li>
                                 <li>Creating styles.css</li>
                                 <li>Standardizing Menu Header & Footer</li>
-                                <li>Created manage.php</li>
-                                <li>Created login.php</li>
-                                <li>Created register.php</li>
-                                <li>Created enhancements.php</li>
+                                <li>Created process_eoi.php</li>
+                                <li>Create an EOI table</li>
+                                <li>Created half of enhancements.php</li>
                             </ul>
                         </li>
                     </ul>
@@ -68,8 +67,10 @@
                             backgrounds of every page.</dd>
                         <dt>manage.php</dt>
                         <dd>He wrote all the code for the page</dd>
-                        <dt>enhancements.php</dt>
+                        <dt>process_eoi.php</dt>
                         <dd>He wrote all the code for the page</dd>
+                        <dt>enhancements.php</dt>
+                        <dd>He wrote all the code for database sorting & the registration</dd>
                       </dl>
 
                     <h3>Biography</h3>
@@ -165,8 +166,9 @@
                                 <li>Providing the idea & template for package.html</li>
                                 <li>Use PHP to reuse header, footer & menu</li>
                                 <li>Create settings.php</li>
-                                <li>Create an EOI table</li>
+                                <li>Created manage.php</li>
                                 <li>Update members contribution on the about page</li>
+                                <li>Created half of enhancements.php</li>
                             </ul>
                         </li>
                     </ul>
@@ -181,10 +183,12 @@
                         <dd>He wrote all the code & all content therein and updated the file names to .php & .inc</dd>
                         <dt>settings.php</dt>
                         <dd>He wrote all the code & all content therein</dd>
-                        <dt>EOI table</dt>
+                        <dt>manage.php</dt>
                         <dd>He wrote all content therein</dd>
                         <dt>Update members contribution</dt>
                         <dd>He wrote all content therein</dd>
+                        <dt>enhancements.php</dt>
+                        <dd>He wrote all the code for lockout after 3 bad login attempt & the login itself</dd>
                       </dl>
 
                     <h3>Biography</h3>
@@ -278,7 +282,6 @@
                                 <li>Creating jobs.html</li>
                                 <li>Creating package.html</li>
                                 <li>Create table 'jobs' MySQL database</li>
-                                <li>Create process_eoi.php</li>
                             </ul>
                         </li>
                     </ul>
@@ -292,8 +295,6 @@
                         <dd>He wrote all the code & all content therein</dd>
                         <dt>'jobs' MySQL database</dt>
                         <dd>He wrote all content therein</dd>
-                        <dt>process_eoi.php</dt>
-                        <dd>He wrote all the code & all content therein</dd>
                     </dl>
                     
 
