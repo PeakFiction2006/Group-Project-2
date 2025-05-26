@@ -107,9 +107,12 @@
                         echo "<p>Salary: $salary</p>";
                         echo "<p>Years of Experience: $yoe</p>";
                         echo "<h4>Brief Description</h4>";
-                        echo "<p>$desc</p>";
-                        echo "<p>$responsibilities</p>";
-                        echo "<p>$essen_qual</p>";
+                        echo "<p>$desc</p><br>";
+                        echo "<h4>Key Responsibilities</h4>";
+                        echo "<p>$responsibilities</p><br>";
+                        echo "<h4>Essential Qualifications</h4>";
+                        echo "<p>$essen_qual</p><br>";
+                        echo "<h4>Preferred Qualifications</h4>";
                         echo "<p>$pref_qual</p>";
                         echo("</section>");
                         echo("<br><br>");
