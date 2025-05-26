@@ -70,21 +70,26 @@
 
         <section id="network_admin"> <!-- Section for Network Admin -->
             <h3>Network Administrator</h3>
-            <?php // php start
+            <?php //php start
+                echo "<p>before settings</p>"; //debugging line
                 require_once("settings.php");
-                $conn_listings = mysqli_connect($host, $username, $password, $database_listings); // Connect to the job listings database
-                echo "<p>testing none</p>";
+                echo "<p>after settings</p>"; //debugging line
+                $database = "assignment_pt2_jobs";
+                $conn = mysqli_connect($host, $username, $password, $database); //Connect to the job listings database
+                echo "<p>testing none</p>"; //debugging line
 
-                if (!$conn_listings) { // Check connection
+                if (!$conn) { //Check connection
                     echo "<p>Database connection failed: " . mysqli_connect_error() . "</p>";
                     } else {
-                        $query = "SELECT * FROM listings_basic LIMIT 1"; // Query to get the first job listing data
-                        $result = mysqli_query($conn_listings, $query);
+                        $query = "SELECT * FROM listings_basic LIMIT 1"; //Query to get the first job listing data
+                        $result = mysqli_query($conn, $query);
                         if ($result && mysqli_num_rows($result) > 0) { //If there are results in the database, display them
-                            $row = mysqli_fetch_assoc($result); // Fetch the first row of results
+                            $row = mysqli_fetch_assoc($result); //Fetch the first row of results
 
                         //while ($row = mysqli_fetch_assoc($result)) {
-                            //Output from database 
+                            //Making data safe to output 
+                            echo "<p>Connected successfully</p>"; //debugging line
+
                             $ref_id = htmlspecialchars($row['ref_id']);
                             $position = htmlspecialchars($row['position']);
                             $salary = htmlspecialchars($row['salary']);
@@ -94,7 +99,7 @@
                             $essen_qual = htmlspecialchars($row['essen_qual']);
                             $pref_qual = htmlspecialchars($row['pref_qual']);
 
-                            // Database content
+                            //Display database content
                             echo "<h3>\"$position\"</h3>";
                             echo "<p>Reference ID: \"$ref_id\"</p>";
                             echo "<p>Salary: \"$salary\"</p>";
@@ -109,7 +114,8 @@
                         echo "<p>No data found for Network Administrator</p>";
                     }
                 }
-                mysqli_close($conn_listings);
+                mysqli_close($conn); //Close database connection
+                echo "<p>end of network admin</p>"; //debugging line
             ?>
         </section>
 
