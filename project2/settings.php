@@ -3,7 +3,7 @@ $host = "localhost";
 $username = "root";
 $password = "";
 $database = "EOI";
-$database_listings = "listings_basic";
+$database_listings = "assignment_pt2_jobs";
 
 $conn = mysqli_connect($host, $username, $password, $database);
 $conn_listings = mysqli_connect($host, $username, $password, $database_listings);
