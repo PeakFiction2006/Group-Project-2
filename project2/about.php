@@ -52,7 +52,7 @@
                                 <li>Standardizing Menu Header & Footer</li>
                                 <li>Created process_eoi.php</li>
                                 <li>Create an EOI table</li>
-                                <li>Created half of enhancements.php</li>
+                                <li>Created enhancements.php</li>
                             </ul>
                         </li>
                     </ul>
@@ -60,17 +60,15 @@
                     <h3>Contribution</h3>
                     <dl>
                         <dt>apply.html</dt>
-                        <dd>He wrote all the code, content, and all css code <br>
-                            for the page(under direction of Lachlan's editing)</dd>
+                        <dd>He wrote all the code, content, and all css code</dd>
                         <dt>styles.css</dt>
-                        <dd>He wrote all the code for the header, footer and <br>
-                            backgrounds of every page.</dd>
+                        <dd>Wrote the code for header, footer and backgrounds</dd>
                         <dt>manage.php</dt>
                         <dd>He wrote all the code for the page</dd>
                         <dt>process_eoi.php</dt>
                         <dd>He wrote all the code for the page</dd>
                         <dt>enhancements.php</dt>
-                        <dd>He wrote all the code for database sorting & the registration</dd>
+                        <dd>He wrote all the code for database sorting &<br>the registration & login & login timeout</dd>
                       </dl>
 
                     <h3>Biography</h3>
@@ -168,7 +166,6 @@
                                 <li>Create settings.php</li>
                                 <li>Created manage.php</li>
                                 <li>Update members contribution on the about page</li>
-                                <li>Created half of enhancements.php</li>
                             </ul>
                         </li>
                     </ul>
@@ -180,16 +177,16 @@
                         <dt>about.html</dt>
                         <dd>He wrote all the code & all content therein</dd>
                         <dt>header.inc, footer.inc & menu.inc</dt>
-                        <dd>He wrote all the code & all content therein and updated the file names to .php & .inc</dd>
+                        <dd>Moved reocurring HTML code inside therein<dd>
+                        <dt>Updated the file names to .php & .inc</dt>
+                        <dd></dd>
                         <dt>settings.php</dt>
                         <dd>He wrote all the code & all content therein</dd>
                         <dt>manage.php</dt>
                         <dd>He wrote all content therein</dd>
-                        <dt>Update members contribution</dt>
-                        <dd>He wrote all content therein</dd>
-                        <dt>enhancements.php</dt>
-                        <dd>He wrote all the code for lockout after 3 bad login attempt & the login itself</dd>
-                      </dl>
+                        <dt>Updated members contribution</dt>
+                        <dd>He modified content therein</dd>
+                    </dl>
 
                     <h3>Biography</h3>
                     <p>
@@ -281,7 +278,8 @@
                             <ul>
                                 <li>Creating jobs.html</li>
                                 <li>Creating package.html</li>
-                                <li>Create table 'jobs' MySQL database</li>
+                                <li>Create table 'listings_basic' MySQL table</li>
+                                <li>Changed jobs.php to query listings_basic to populate page</li>
                             </ul>
                         </li>
                     </ul>
@@ -293,7 +291,9 @@
                         <dd>He wrote all the code & all content therein</dd>
                         <dt>package.html</dt>
                         <dd>He wrote all the code & all content therein</dd>
-                        <dt>'jobs' MySQL database</dt>
+                        <dt>Created 'listings_basic' MySQL table</dt>
+                        <dd>He wrote all content therein</dd>
+                        <dt>Modified jobs.php to query listings_basic table to populate page</dt>
                         <dd>He wrote all content therein</dd>
                     </dl>
                     
