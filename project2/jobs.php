@@ -71,17 +71,18 @@
         <section id="network_admin"> <!-- Section for Network Admin -->
             <h3>Network Administrator</h3>
             <?php // php start
+                require_once("settings.php");
                 $conn_listings = mysqli_connect($host, $username, $password, $database_listings); // Connect to the job listings database
-                echo "<p>testing</p>";
-                
+                echo "<p>testing none</p>";
+
                 if (!$conn_listings) { // Check connection
                     echo "<p>Database connection failed: " . mysqli_connect_error() . "</p>";
-                } else {
-                    $sql = "SELECT * FROM listings_basic LIMIT 1"; // Query to get the first job listing data
-                    $result = mysqli_query($conn_listings, $sql);
-                    
-                    if ($result && mysqli_num_rows($result) > 0) { //If there are results in the database, display them
-                        $row = mysqli_fetch_assoc($result); // Fetch the first row of results
+                    } else {
+                        $query = "SELECT * FROM listings_basic LIMIT 1"; // Query to get the first job listing data
+                        $result = mysqli_query($conn_listings, $query);
+                        if ($result && mysqli_num_rows($result) > 0) { //If there are results in the database, display them
+                            $row = mysqli_fetch_assoc($result); // Fetch the first row of results
+
                         //while ($row = mysqli_fetch_assoc($result)) {
                             //Output from database 
                             $ref_id = htmlspecialchars($row['ref_id']);
