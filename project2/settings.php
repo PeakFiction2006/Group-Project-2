@@ -6,9 +6,13 @@ $database = "EOI";
 $database_listings = "listings_basic"
 
 $conn = mysqli_connect($host, $username, $password, $database);
-$conn_listings = $conn = mysqli_connect($host, $username, $password, $database_listings);
+$conn_listings = mysqli_connect($host, $username, $password, $database_listings);
 
 if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+
+if (!$conn_listings) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
