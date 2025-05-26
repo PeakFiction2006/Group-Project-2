@@ -5,6 +5,11 @@
 </head>
 
 <body>
+
+<?php 
+    require_once("settings.php");
+?>
+
 <?php include("nav.inc");?> <!-- Include the menu navigation file -->
 
     <!--Put all of the webpage content inside this div-->
@@ -68,71 +73,40 @@
     <div id="jobs_positions">  <!-- Seperate div for listed positions -->
         <h2>Currently Open Positions at Careers at Victoria Digital Security</h2>
 
-        <section id="network_admin"> <!-- Section for Network Admin -->
-            <h3>Network Administrator</h3>
-            <?php //php start
-                echo "<p>before settings</p>"; //debugging line
-                require_once("settings.php");
-                echo "<p>after settings</p>"; //debugging line
-                
-                $conn_listings = mysqli_connect($host, $username, $password, $database_listings); //Connect to the job listings database
-                echo "<p>testing none</p>"; //debugging line
+        <?php //php start
+            $query = "SELECT * FROM listings_basic"; //Query to get the first job listing data
+            $result = mysqli_query($conn, $query);
+            if (!$result ||  mysqli_num_rows($result) == 0)
+            {
+                    echo "<p>No data found in job listings!</p>";
+                    return;
+            }
+            while ($row = mysqli_fetch_assoc($result)) {
+                        //Making data safe to output 
+                        $ref_id = htmlspecialchars($row['ref_id']);
+                        $position = htmlspecialchars($row['position']);
+                        $salary = htmlspecialchars($row['salary']);
+                        $yoe = htmlspecialchars($row['yoe']);
+                        $desc = htmlspecialchars($row['desc']);
+                        $responsibilities = htmlspecialchars($row['responsibilities']);
+                        $essen_qual = htmlspecialchars($row['essen_qual']);
+                        $pref_qual = htmlspecialchars($row['pref_qual']);
 
-                if (!$conn_listings) { //Check connection
-                    echo "<p>Database connection failed: " . mysqli_connect_error() . "</p>";
-                    } else {
-                        $query = "SELECT * FROM listings_basic LIMIT 1"; //Query to get the first job listing data
-                        $result = mysqli_query($conn_listings, $query);
-                        if ($result && mysqli_num_rows($result) > 0) { //If there are results in the database, display them
-                            $row = mysqli_fetch_assoc($result); //Fetch the first row of results
-
-                        //while ($row = mysqli_fetch_assoc($result)) {
-                            //Making data safe to output 
-                            echo "<p>Connected successfully</p>"; //debugging line
-
-                            $ref_id = htmlspecialchars($row['ref_id']);
-                            $position = htmlspecialchars($row['position']);
-                            $salary = htmlspecialchars($row['salary']);
-                            $yoe = htmlspecialchars($row['yoe']);
-                            $desc = htmlspecialchars($row['desc']);
-                            $responsibilities = htmlspecialchars($row['responsibilities']);
-                            $essen_qual = htmlspecialchars($row['essen_qual']);
-                            $pref_qual = htmlspecialchars($row['pref_qual']);
-
-                            //Display database content
-                            echo "<h3>\"$position\"</h3>";
-                            echo "<p>Reference ID: \"$ref_id\"</p>";
-                            echo "<p>Salary: \"$salary\"</p>";
-                            echo "<p>Years of Experience: \"$yoe\"</p>";
-                            echo "<h4>Brief Description</h4>";
-                            echo "<p>\"$desc\"</p>";
-                            echo "<p>\"$responsibilities\"</p>";
-                            echo "<p>\"$essen_qual\"</p>";
-                            echo "<p>\"$pref_qual\"</p>";
-                        //}
-                    } else { //No results found
-                        echo "<p>No data found for Network Administrator</p>";
-                    }
-                }
-                mysqli_close($conn_listings); //Close database connection
-                echo "<p>end of network admin</p>"; //debugging line
-            ?>
-        </section>
-
-                    
-         
-        <br><br><br>                
-
-        <section id="systems_engineer"> <!-- Section for Systems Engineer -->
-            <h3>Systems Engineer</h3>
-        </section>
-
-        <br><br><br>
-
-        <section id="security_analyst">  <!-- Section for security analyst -->
-            <h3>Security Analyst</h3>
-        </section>
-
+                        //Display database content
+                        echo("<section id=\"network_admin\">");
+                        echo "<h3>$position</h3>";
+                        echo "<p>Reference ID: $ref_id</p>";
+                        echo "<p>Salary: $salary</p>";
+                        echo "<p>Years of Experience: $yoe</p>";
+                        echo "<h4>Brief Description</h4>";
+                        echo "<p>$desc</p>";
+                        echo "<p>$responsibilities</p>";
+                        echo "<p>$essen_qual</p>";
+                        echo "<p>$pref_qual</p>";
+                        echo("</section>");
+                        echo("<br><br>");
+            }
+        ?>
         <br>
     </div>
 
