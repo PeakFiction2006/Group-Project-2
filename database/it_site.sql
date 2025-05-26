@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: May 22, 2025 at 04:51 AM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Host: 127.0.0.1
+-- Generation Time: May 26, 2025 at 01:05 PM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,8 +18,61 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `assignment_pt2_jobs`
+-- Database: `it_site`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `accounts`
+--
+
+CREATE TABLE `accounts` (
+  `user_id` int(11) NOT NULL,
+  `user_name` varchar(50) NOT NULL,
+  `user_password` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `accounts`
+--
+
+INSERT INTO `accounts` (`user_id`, `user_name`, `user_password`) VALUES
+(1, 'admin', 'password1234');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `eoi`
+--
+
+CREATE TABLE `eoi` (
+  `eoi_number` int(11) NOT NULL,
+  `eoi_status` varchar(7) NOT NULL,
+  `jobref` varchar(5) NOT NULL,
+  `name_first` varchar(30) NOT NULL,
+  `name_last` varchar(30) NOT NULL,
+  `birthdate` date NOT NULL,
+  `gender` varchar(10) NOT NULL,
+  `addr_street` varchar(100) NOT NULL,
+  `addr_suburb` varchar(100) NOT NULL,
+  `addr_state` varchar(100) NOT NULL,
+  `addr_postcode` int(11) NOT NULL,
+  `contact_email` varchar(100) NOT NULL,
+  `contact_phone` int(11) NOT NULL,
+  `skills` varchar(100) DEFAULT NULL,
+  `skills_other` varchar(2048) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `eoi`
+--
+
+INSERT INTO `eoi` (`eoi_number`, `eoi_status`, `jobref`, `name_first`, `name_last`, `birthdate`, `gender`, `addr_street`, `addr_suburb`, `addr_state`, `addr_postcode`, `contact_email`, `contact_phone`, `skills`, `skills_other`) VALUES
+(1, 'New', 'NAXG2', 'Lachlan', 'Phillips', '2025-05-09', 'Male', 'Street', 'Town', 'SA', 2524, 'someone@something.com', 2147483647, 'Programming, MySQL', 'Undefined'),
+(2, 'Current', 'SE7M5', 'Robert', 'Guy', '2025-05-02', 'Male', 'Street', 'Town', 'SA', 2312, 'someone@something.com', 2147483647, 'Programming, Html', 'Undefined'),
+(3, 'New', 'SAH05', 'Earl', 'Green', '2025-05-08', 'Other', 'Street', 'Town', 'TAS', 2312, 'someone@something.com', 2147483647, 'Programming, Teamwork', 'Undefined'),
+(4, 'New', 'NAXG2', 'Sarah', 'Jones', '2025-05-03', 'Female', 'Street', 'Town', 'ACT', 2524, 'someone@something.com', 2147483647, 'Programming', 'Undefined');
 
 -- --------------------------------------------------------
 
@@ -36,7 +89,7 @@ CREATE TABLE `listings_basic` (
   `responsibilities` text NOT NULL,
   `essen_qual` text NOT NULL,
   `pref_qual` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='table for position title, salary, yoe and brief desc';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `listings_basic`
@@ -52,10 +105,38 @@ INSERT INTO `listings_basic` (`ref_id`, `position`, `salary`, `yoe`, `desc`, `re
 --
 
 --
+-- Indexes for table `accounts`
+--
+ALTER TABLE `accounts`
+  ADD PRIMARY KEY (`user_id`);
+
+--
+-- Indexes for table `eoi`
+--
+ALTER TABLE `eoi`
+  ADD PRIMARY KEY (`eoi_number`);
+
+--
 -- Indexes for table `listings_basic`
 --
 ALTER TABLE `listings_basic`
   ADD PRIMARY KEY (`ref_id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `accounts`
+--
+ALTER TABLE `accounts`
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `eoi`
+--
+ALTER TABLE `eoi`
+  MODIFY `eoi_number` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
