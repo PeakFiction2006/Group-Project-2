@@ -74,15 +74,15 @@
                 echo "<p>before settings</p>"; //debugging line
                 require_once("settings.php");
                 echo "<p>after settings</p>"; //debugging line
-                $database = "assignment_pt2_jobs";
-                $conn = mysqli_connect($host, $username, $password, $database); //Connect to the job listings database
+                
+                $conn_listings = mysqli_connect($host, $username, $password, $database_listings); //Connect to the job listings database
                 echo "<p>testing none</p>"; //debugging line
 
-                if (!$conn) { //Check connection
+                if (!$conn_listings) { //Check connection
                     echo "<p>Database connection failed: " . mysqli_connect_error() . "</p>";
                     } else {
                         $query = "SELECT * FROM listings_basic LIMIT 1"; //Query to get the first job listing data
-                        $result = mysqli_query($conn, $query);
+                        $result = mysqli_query($conn_listings, $query);
                         if ($result && mysqli_num_rows($result) > 0) { //If there are results in the database, display them
                             $row = mysqli_fetch_assoc($result); //Fetch the first row of results
 
@@ -114,7 +114,7 @@
                         echo "<p>No data found for Network Administrator</p>";
                     }
                 }
-                mysqli_close($conn); //Close database connection
+                mysqli_close($conn_listings); //Close database connection
                 echo "<p>end of network admin</p>"; //debugging line
             ?>
         </section>
