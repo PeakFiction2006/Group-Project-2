@@ -107,7 +107,7 @@
                         echo "<p>$essen_qual</p><br>";
                         echo "<h4>👍 Preferred Qualifications</h4>";
                         echo "<p>$pref_qual</p>";
-                        echo("<h3>Finished Reading? Apply <a href=\"apply.html\">Here.</a></h3>");
+                        echo("<h3>Finished Reading? Apply <a href=\"apply.php\">Here.</a></h3>");
                         echo("</section>");
                         echo("<br><br>");
             }
